@@ -12,6 +12,7 @@ import pandas.io.sql as psql
 from pandas import options
 options.io.excel.xlsx.writer = 'xlsxwriter'
 
+# Example SQL query is from an Microsoft Dynamics AX 2009 ERP system
 cnxn = pyodbc.connect('DRIVER={SQL Server};SERVER=Put you server name here;DATABASE=put your database here;Trusted_Connection=yes;')
 cursor = cnxn.cursor()
 sql = '''
@@ -44,6 +45,7 @@ data_matrix = scale(data_matrix.todense())
 
 from sklearn.cluster import KMeans
 
+# define how many clusters and how many iterations. 
 clustering_model = KMeans(n_clusters = 25, n_init= 10)
 clustering_model.fit(data_matrix)
 
@@ -60,6 +62,7 @@ bycluster = results.groupby('cluster')
 
 pd.set_option('display.precision',3)
 #http://stackoverflow.com/questions/22105452/pandas-what-is-the-equivalent-of-sql-group-by-having
+
 #extract data per cluster where the the cluster has fewer than 20 values
 kclusters=bycluster.filter(lambda x: len(x) < 20)
 
