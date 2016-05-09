@@ -20,7 +20,7 @@ SELECT cast(ledgertrans.accountnum AS INT) AS AccountNum, cast(ledgertrans.trans
 amountcur, txt, ledgertrans.Posting, LedgerPostingJournalID, Voucher, Transtype, crediting, createdby, Name FROM ledgertrans 
 LEFT JOIN LEDGERTABLE ON LEDGERTABLE.ACCOUNTNUM = LEDGERTRANS.ACCOUNTNUM AND LEDGERTABLE.DATAAREAID = LEDGERTRANS.DATAAREAID 
 LEFT JOIN UserInfo ON ID = createdby
-WHERE transdate > (GetDate() -60) and txt NOT LIKE '%Reverse%' 
+WHERE transdate > (GetDate() -31) and txt NOT LIKE '%Reverse%' 
 and txt NOT LIKE '%Void%' AND LEDGERTABLE.DATAAREAID = 'your company here' ORDER BY transdate DESC;
 '''
 
@@ -98,7 +98,6 @@ html = """\
     <p>Hi!<br>
        How are you?<br>
        Follow the path below to see the latest clustering results.<br>
-       path here <br>
        Click on "kmeans" for the results. 
     </p>
   </body>
@@ -125,4 +124,5 @@ mail.login('your username', 'your password')
 mail.sendmail(me, you, msg.as_string())
 mail.quit()
  
-#schedule through windows scheduler
+#schedule by making a batch file and then scheduling through windows scheduler. See example batch file below:
+# start 'your python path here' 'path to file here'\AstecKmeans.py 
