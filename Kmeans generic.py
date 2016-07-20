@@ -3,8 +3,11 @@
 Created on Thu Nov 05 13:30:49 2015
 
 @author: aclark
+
+Program heavily based off of this wonderful tutorial by 
+
+http://www.gadatascience.com/modeling/kmeans.html
 """
-#http://www.gadatascience.com/modeling/kmeans.html
 
 import pyodbc
 import pandas as pd
